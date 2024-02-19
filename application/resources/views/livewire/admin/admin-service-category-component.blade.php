@@ -47,13 +47,32 @@
                 <div class="container">
                     <div class="row portfolioContainer">
                         <div class="col-md-12 profile1">
-                            <table>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            All Service Categories
+                                        </div>
+                                        <div class="col-md-6">
+                                        <a href="{{route('admin.add_service_category')}}" class="btn btn-info pull-right">Add New</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                @if(Session::has('message'))
+                                    <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+                                @endif
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Image</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Slug</th>
+                                        <th scope="col">Action</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -63,6 +82,10 @@
                                             <td><img src="{{asset('/images/categories')}}/{{$scategory->image}}" width="60"/> </td>
                                             <td>{{$scategory->name}}</td>
                                             <td>{{$scategory->slug}}</td>
+                                            <td>
+                                                <a href="{{route('admin.edit_service_category', ['category_id'=>$scategory->id])}}"><i class="fa fa-edit fa-2x text-info"></i></a>
+                                                <a href="#" onclick="confirm('Are you sure you want to delete this service category?') || event.stopImmediatePropagation()" wire:click.prevent="deleteServiceCategory({{$scategory->id}})"><i class="fa fa-times fa-2x text-danger" style="margin-left: 10px;"></i></a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -72,6 +95,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 </div>
