@@ -29,12 +29,12 @@
         <div class="bg_parallax image_02_parallax"></div>
         <div class="opacy_bg_02">
             <div class="container">
-                <h1>Service Categories</h1>
+                <h1>All Services</h1>
                 <div class="crumbs">
                     <ul>
                         <li><a href="/">Home</a></li>
                         <li>/</li>
-                        <li>Service Categories</li>
+                        <li>All Services</li>
                     </ul>
                 </div>
             </div>
@@ -51,10 +51,10 @@
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            All Service Categories
+                                            All Service 
                                         </div>
                                         <div class="col-md-6">
-                                        <a href="{{route('admin.add_service_category')}}" class="btn btn-info pull-right">Add New</a>
+                                        <a href="{{route('admin.add_service')}}" class="btn btn-info pull-right">Add New</a>
 
                                         </div>
                                     </div>
@@ -70,28 +70,39 @@
                                         <th scope="col">#</th>
                                         <th scope="col">Image</th>
                                         <th scope="col">Name</th>
-                                        <th scope="col">Slug</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">category</th>
+                                        <th scope="col">Created At</th>
                                         <th scope="col">Action</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($scategories as $scategory)
+                                    @foreach($services as $service)
                                         <tr>
-                                            <td>{{$scategory->id}}</td>
-                                            <td><img src="{{asset('/images/categories')}}/{{$scategory->image}}" width="60"/> </td>
-                                            <td>{{$scategory->name}}</td>
-                                            <td>{{$scategory->slug}}</td>
+                                            <td>{{$service->id}}</td>
+                                            <td><img src="{{asset('/images/services/thumbnails')}}/{{$service->thumbnail}}" width="60"/> </td>
+                                            <td>{{$service->name}}</td>
+                                            <td>{{$service->price}}</td>
                                             <td>
-                                                <a href="{{route('admin.services_by_category', ['category_slug'=>$scategory->slug])}}" style="margin-right: 10px;"><i class="fa fa-list fa-2x text-info"></i></a>
-                                                <a href="{{route('admin.edit_service_category', ['category_id'=>$scategory->id])}}"><i class="fa fa-edit fa-2x text-info"></i></a>
-                                                <a href="#" style="margin-left: 10px;" onclick="confirm('Are you sure you want to delete this service category?') || event.stopImmediatePropagation()" wire:click.prevent="deleteServiceCategory({{$scategory->id}})"><i class="fa fa-times fa-2x text-danger" ></i></a>
+                                                @if($service->status)
+                                                    Active
+                                                @else
+                                                    Inactive
+                                                @endif
+                                            </td>
+                                            <td>{{$service->category->name}}</td>
+                                            <td>{{$service->created_at}}</td>
+                                            <td>
+                                                <a href="#"><i class="fa fa-edit fa-2x text-info"></i></a>
+                                                <a href="#"  style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{ $scategories->links() }}
+                            {{ $services->links() }}
                         </div>
                     </div>
                 </div>

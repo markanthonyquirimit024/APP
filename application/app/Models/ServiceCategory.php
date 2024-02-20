@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class ServiceCategory extends Model
 {
+
+    protected $table = "service_categories";
+    
     use HasFactory;
+
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
 }

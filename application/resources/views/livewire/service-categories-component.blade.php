@@ -18,7 +18,7 @@
             <div class="container">
                 <div class="row" style="margin-top: -30px;">
                     <div class="titles">
-                        <h2>All <span>Services</span></h2>
+                        <h2>Service <span>Categories</span></h2>
                         <i class="fa fa-plane"></i>
                         <hr class="tall">
                     </div>
@@ -31,7 +31,7 @@
                             @foreach($scategories as $scategory)
                                 <li>
                                     <div class="item-service-line">
-                                        <i class="fa"><a href="#"><img class="icon-img"
+                                        <i class="fa"><a href="{{route('home.services_by_category', ['category_slug' => $scategory->slug])}}"><img class="icon-img"
                                                     src="{{asset('images/categories')}}/{{$scategory->image}}" alt="{{$scategory->name}}"></a></i>
                                         <h5>{{$scategory->name}}</h5>
                                     </div>
