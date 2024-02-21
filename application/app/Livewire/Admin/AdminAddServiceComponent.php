@@ -43,6 +43,7 @@ class AdminAddServiceComponent extends Component
             'inclusion' => 'required',
             'exclusion' => 'required'
         ]);
+    
     }
 
     public function createService()
@@ -53,9 +54,9 @@ class AdminAddServiceComponent extends Component
         'tagline' => 'required',
         'service_category_id' => 'required',
         'price' => 'required',
-        'image' => 'required|mimes:jpeg,png',
-        'thumbnail' => 'required|mimes:jpeg,png',
         'description' => 'required',
+        'thumbnail' => 'required|mimes:jpeg,png',
+        'image' => 'required|mimes:jpeg,png',
         'inclusion' => 'required',
         'exclusion' => 'required',
     ]);
