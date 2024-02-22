@@ -29,12 +29,12 @@
         <div class="bg_parallax image_02_parallax"></div>
         <div class="opacy_bg_02">
             <div class="container">
-                <h1>{{$category_name}} Services</h1>
+                <h1>All Slides</h1>
                 <div class="crumbs">
                     <ul>
                         <li><a href="/">Home</a></li>
                         <li>/</li>
-                        <li>{{$category_name}} Services</li>
+                        <li>All Slides</li>
                     </ul>
                 </div>
             </div>
@@ -51,10 +51,10 @@
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-md-6">
-                                        {{$category_name}} Service 
+                                            All Slides 
                                         </div>
                                         <div class="col-md-6">
-                                        <a href="#" class="btn btn-info pull-right">Add New</a>
+                                        <a href="{{route('admin.add_slide')}}" class="btn btn-info pull-right">Add New</a>
 
                                         </div>
                                     </div>
@@ -69,40 +69,36 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Image</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Price</th>
+                                        <th scope="col">Title</th>
                                         <th scope="col">Status</th>
-                                        <th scope="col">category</th>
                                         <th scope="col">Created At</th>
                                         <th scope="col">Action</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($services as $service)
+                                    @foreach($slides as $slide)
                                         <tr>
-                                            <td>{{$service->id}}</td>
-                                            <td><img src="{{asset('/images/services/thumbnails')}}/{{$service->thumbnail}}" width="60"/> </td>
-                                            <td>{{$service->name}}</td>
-                                            <td>{{$service->price}}</td>
+                                            <td>{{$slide->id}}</td>
+                                            <td><img src="{{asset('/images/slider')}}/{{$slide -> image}}" width="60"/> </td>
+                                            <td>{{$slide->title}}</td>
                                             <td>
-                                                @if($service->status)
+                                                @if($slide->status)
                                                     Active
                                                 @else
                                                     Inactive
                                                 @endif
                                             </td>
-                                            <td>{{$service->category->name}}</td>
-                                            <td>{{$service->created_at}}</td>
+                                            <td>{{$slide->created_at}}</td>
                                             <td>
-                                                <a href="#"><i class="fa fa-edit fa-2x text-info"></i></a>
-                                                <a href="#"  style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
+                                                <a href="{{route('admin.edit_slide', ['slide_id' => $slide->id])}}"><i class="fa fa-edit fa-2x text-info"></i></a>
+                                                <a href="#" onclick="confirm('Are you sure you want to delete this slide?') || event.stopImmediatePropagation()"  wire:click.prevent="deleteSlide({{$slide->id}})"  style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{  $service->links()   }} 
+                            {{ $slides->links() }}
                         </div>
                     </div>
                 </div>

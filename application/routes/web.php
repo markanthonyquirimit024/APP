@@ -1,15 +1,20 @@
 <?php
 
+use App\Http\Controllers\SearchController;
 use App\Livewire\Admin\AdminAddServiceCategoryComponent;
 use App\Livewire\Admin\AdminAddServiceComponent;
+use App\Livewire\Admin\AdminAddSlideComponent;
 use App\Livewire\Admin\AdminDashboardComponent;
 use App\Livewire\Admin\AdminEditServiceCategoryComponent;
 use App\Livewire\Admin\AdminEditServiceComponent;
+use App\Livewire\Admin\AdminEditSlideComponent;
 use App\Livewire\Admin\AdminServiceCategoryComponent;
 use App\Livewire\Admin\AdminServicesByCategoryComponent;
 use App\Livewire\Admin\AdminServicesByComponent;
 use App\Livewire\Admin\AdminServicesComponent;
+use App\Livewire\Admin\AdminSliderComponent;
 use App\Livewire\Admin\ServiceDetailsComponent;
+use App\Livewire\ChangeLocationComponent;
 use App\Livewire\Customer\CustomerDashboardComponent;
 use App\Livewire\HomeComponent;
 use App\Livewire\ServiceCategoriesComponent;
@@ -32,6 +37,10 @@ Route::get('/', HomeComponent::class)->name('home');
 Route::get('/service-categories', ServiceCategoriesComponent::class)->name('home.service_categories');
 Route::get('/{category_slug}/services', ServicesByCategoryComponent::class)->name('home.services_by_category');
 Route::get('/service/{service_slug}', ServiceDetailsComponent::class)->name('home.services_details');
+
+Route::get('/autocomplete', [SearchController::class, 'autocomplete'])->name('autocomplete');
+Route::post('/search', [SearchController::class, 'searchService'])->name('searchService');
+Route::get('/change-location', [ChangeLocationComponent::class])->name('home.change_location');
 
 
 
@@ -57,5 +66,8 @@ Route::middleware(['auth:sanctum','verified',])->group(function () {
     Route::get('/admin/service/add', AdminAddServiceComponent::class)->name('admin.add_service');
     Route::get('/admin/service/edit/{service_slug}', AdminEditServiceComponent::class)->name('admin.edit_service');
 
+    Route::get('/admin/slider', AdminSliderComponent::class)->name('admin.slider');
+    Route::get('/admin/slide/add', AdminAddSlideComponent::class)->name('admin.add_slide');
+    Route::get('/admin/slide/edit/{slide_id}', AdminEditSlideComponent::class)->name('admin.edit_slide');
 
  });

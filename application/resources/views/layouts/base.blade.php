@@ -38,13 +38,7 @@
                                         class="fa fa-map-marker"></i> Faridabad, Haryana</a></li>
                         </ul>
                     </div>
-                    <div class="col-md-6">
-                        <ul class="visible-md visible-lg text-right">
-                            <li><i class="fa fa-comment"></i> Live Chat</li>
-                            <li><a href="index.php/changelocation.html"><i class="fa fa-map-marker"></i> Faridabad,
-                                    Haryana</a></li>
-                        </ul>
-                    </div>
+                    @livewire('location-component')
                 </div>
             </div>
         </div>
@@ -130,6 +124,7 @@
                                         <li><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
                                         <li><a href="{{route('admin.service_categories')}}">Service Categories</a></li>
                                         <li><a href="{{route('admin.all_services')}}">All Services</a></li>
+                                        <li><a href="{{route('admin.slider')}}">Manage Slider</a></li>
                                         <li><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                                     </ul>
                                 </li>
@@ -306,6 +301,7 @@
             });
         });
     </script>
+    @stack('scripts')
     @livewireScripts
 </body>
 </html>
