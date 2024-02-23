@@ -3,12 +3,12 @@
             <div class="bg_parallax image_02_parallax"></div>
             <div class="opacy_bg_02">
                 <div class="container">
-                    <h1>Registeration</h1>
+                    <h1>Registration</h1>
                     <div class="crumbs">
                         <ul>
                             <li><a href="/">Home</a></li>
                             <li>/</li>
-                            <li>Registeration</li>
+                            <li>Registration</li>
                         </ul>
                     </div>
                 </div>
@@ -23,8 +23,9 @@
                         <div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-3 profile1" style="padding-bottom:40px;">
                             <div class="thinborder-ontop">
                                 <h3>User Info</h3>
-                                <x-validation-errors class="mb-4" />
-                                <form id="userregisterationform" method="POST" action="{{route('register')}}">                                    
+                                <x-validation-errors class="mb-4"/>
+                                <form id="userregisterationform" method="POST" action="{{route('register')}}">
+                                    @csrf                                                                      
                                     <div class="form-group row">
                                         <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
                                         <div class="col-md-6">
