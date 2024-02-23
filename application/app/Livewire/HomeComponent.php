@@ -18,6 +18,7 @@ class HomeComponent extends Component
         $sid = Service::whereIn('slug', ['ac', 'tv', 'refrigerator', 'geyser', 'water-purifier'])->get()->pluck('id');
         $aservices = Service::whereIn('service_category_id', $sid)->inRandomOrder()->take(8)->get();
         $slides = Slider::where('status')->get();
+        
         return view('livewire.home-component', ['slides' => $slides, 'scategories' => $scategories, 'fservices' => $fservices, 'fscategories' => $fscategories, 'aservices' => $aservices])->layout('layouts.base');
     }
 }

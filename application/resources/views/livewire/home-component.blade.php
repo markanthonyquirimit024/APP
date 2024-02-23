@@ -2,6 +2,7 @@
     <section class="tp-banner-container">
         <div class="tp-banner">
             <ul>
+                
                 <li data-transition="slidevertical" data-slotamount="1" data-masterspeed="1000"
                     data-saveperformance="off" data-title="Slide">
                     <img src="{{ asset('assets/img/slide/1.jpg') }}" alt="fullslide1" data-bgposition="center center"
@@ -39,20 +40,21 @@
                 <div class="row"></div>
             </div>
             <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <ul id="sponsors" class="tooltip-hover">
-                            @foreach($scategories as $scategory)
-                            <li data-toggle="tooltip" title="{{ $scategory->name }}" data-original-title="{{ $scategory->name }}">
-                                <a href="{{ route('home.services_by_category', ['category_slug' => $scategory->slug]) }}">
-                                    <img src="{{ asset('images/categories') }}/{{ $scategory->image }}" alt="{{ $scategory->name }}">
-                                </a>
-                            </li>
-                            @endforeach
-                        </ul>
-                    </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul id="sponsors" class="tooltip-hover">
+                        @foreach($scategories as $scategory)
+                        <li data-toggle="tooltip" title="{{ $scategory->name }}" data-original-title="{{ $scategory->name }}">
+                            <a href="{{ route('home.services_by_category', ['category_slug' => $scategory->slug]) }}">
+                                <img src="{{ asset('images/categories') }}/{{ $scategory->image }}" alt="{{ $scategory->name }}" style="width: 100px; height: 100px;">
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
+        </div>
+
         </div>
         <div class="semiboxshadow text-center">
             <img src="{{ asset('assets/img/img-theme/shp.png') }}" class="img-responsive" alt="">
@@ -61,7 +63,7 @@
             <div class="container">
                 <div class="row">
                     <div class="titles">
-                        <h2>SurfsideMedia <span>Choice</span> of Services</h2>
+                        <h2>At <span>Your</span> Service</h2>
                         <i class="fa fa-plane"></i>
                         <hr class="tall">
                     </div>
@@ -93,7 +95,7 @@
         <div class="container">
             <div class="row">
                 <div class="titles">
-                    <h2><span>Appliance</span>Services</h2>
+                    <h2><span>Booking</span>Services</h2>
                     <i class="fa fa-plane"></i>
                     <hr class="tall">
                 </div>
@@ -121,7 +123,7 @@
                                         <div class="item-service-line">
                                             <i class="fa">
                                                 <img class="icon-img"
-                                                    src="{{ asset('images/categories') }}/{{ $fscategory->image }}">
+                                                    src="{{ asset('images/categories') }}/{{ $fscategory->image }}" style="width: 150px; height: 150px;">
                                             </i>
                                             <h5>{{ $fscategory->name }}</h5>
                                         </div>

@@ -10,7 +10,13 @@ class SproviderProfileComponent extends Component
 {
 
     public function render()
-   {    $sprovider = ServiceProvider::where('user_id', Auth::user()->id)->first();
+{
+    if(Auth::check()) {
+        $sprovider = ServiceProvider::where('user_id', Auth::user()->id)->first();
         return view('livewire.sprovider.sprovider-profile-component', ['sprovider' => $sprovider])->layout('layouts.base');
     }
+
+    return redirect()->route('login');
+}
+
 }
