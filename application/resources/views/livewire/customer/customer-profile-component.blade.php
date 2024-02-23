@@ -36,19 +36,13 @@
                                 <div class="panel-body">
                                     <div class="row">
                                     <div class="col-md-4">
-                                        @if($customer->image)
-                                            <img src="{{asset('images/customers')}}/{{$customer->image}}" width="100%" />
-                                        @else
                                             <img src="{{asset('images/customers/default.jpg')}}" width="100%" />
-                                        @endif
-
                                         </div>
                                         <div class="col-md-8">
                                             <h3>Name: {{Auth::user()->name}}</h3>
                                             <p><b>Email: </b>{{Auth::user()->email}}</p>
                                             <p><b>Phone: </b>{{Auth::user()->phone}}</p>
-                                            <p><b>City : </b>{{$customer->city}}</p>
-                                            <a href="{{route('sprovider.edit_profile')}}" class="btn btn-info pull-right">Edit Profile</a>
+                                            <a href="{{route('customer.edit_profile')}}" class="btn btn-info pull-right">Edit Profile</a>
                                         </div>
                                     </div>
                                 </div>
@@ -60,3 +54,5 @@
         </div>
     </section>
 </div>
+
+
