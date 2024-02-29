@@ -1,4 +1,22 @@
 <div>
+<style>
+        /* Existing styles... */
+
+        .services-lines .item-service-line {
+            position: relative;
+            overflow: hidden;
+            background-color: black;
+            border: 10px solid white;
+        }
+
+        .services-lines .item-service-line img {
+            width: 100%;
+            height: auto;
+        }
+
+        
+    </style>
+
     <div class="section-title-01 honmob">
         <div class="bg_parallax image_01_parallax"></div>
         <div class="opacy_bg_02">
@@ -38,7 +56,7 @@
                                                 alt="{{$scategory->name}}" style="width: 100px; height: 100px;">
                                         </a>
                                     </i>
-                                    <h5>{{$scategory->name}}</h5>
+                                    <h5 style="background-color: white;">{{$scategory->name}}</h5>
                                 </div>
                             </li>
                         @endforeach

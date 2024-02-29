@@ -49,7 +49,7 @@
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label for="slug" class="control-label col-sm-3">Image: </label>
+                                            <label for="image" class="control-label col-sm-3">Image: </label>
                                                 <div class="col-sm-9">
                                                     <input type="file" class="form-control-file" name="image" wire:model="image">
                                                     @error('image') <p class="text-danger">{{$message}}</p> @enderror
@@ -62,7 +62,7 @@
                                         <div class="form-group">
                                             <label for="status" class="control-label col-sm-3"> Status: </label>
                                                 <div class="col-sm-9">
-                                                    <select class="form-control" name="status" wire:model='status'>
+                                                    <select class="form-control" name="status" wire:model="status">
                                                     <option value="1">Active </option>
                                                     <option value="0">Inactive </option>
 

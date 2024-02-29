@@ -1,6 +1,7 @@
 
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\SearchController;
 use App\Livewire\Admin\AdminAddServiceCategoryComponent;
 use App\Livewire\Admin\AdminAddServiceComponent;
@@ -19,12 +20,14 @@ use App\Livewire\Admin\AdminSliderComponent;
 use App\Livewire\Admin\ServiceDetailsComponent;
 use App\Livewire\ChangeLocationComponent;
 use App\Livewire\ContactComponent;
+use App\Livewire\Customer\BookingHistoryComponent;
 use App\Livewire\Customer\CustomerDashboardComponent;
 use App\Livewire\Customer\CustomerProfileComponent;
 use App\Livewire\Customer\EditCustomerProfileComponent;
 use App\Livewire\HomeComponent;
 use App\Livewire\ServiceCategoriesComponent;
 use App\Livewire\ServicesByCategoryComponent;
+use App\Livewire\Sprovider\CustomerBookingComponent;
 use App\Livewire\Sprovider\EditSproviderProfileComponent;
 use App\Livewire\Sprovider\SproviderDashboardComponent;
 use App\Livewire\Sprovider\SproviderProfileComponent;
@@ -47,27 +50,34 @@ Route::get('/', HomeComponent::class)->name('home');
 
 Route::get('/service-categories', ServiceCategoriesComponent::class)->name('home.service_categories');
 Route::get('/{category_slug}/services', ServicesByCategoryComponent::class)->name('home.services_by_category');
-Route::get('/service/{service_slug}', ServiceDetailsComponent::class)->name('home.services_details');
 
 Route::get('/autocomplete', [SearchController::class, 'autocomplete'])->name('autocomplete');
 Route::post('/search', [SearchController::class, 'searchService'])->name('searchService');
 Route::get('/change-location', [ChangeLocationComponent::class])->name('home.change_location');
 Route::get('/contact-us', ContactComponent::class)->name('home.contact');
+Route::get('/service/{service_slug}', ServiceDetailsComponent::class)->name('home.services_details');
 
 
 
 //For Customer
 Route::middleware(['auth:sanctum','verified'])->group(function () {
-    Route::get('/customer/dashboard', CustomerDashboardComponent::class)->name('customer.dashboard');
-    Route::get('/customer/profile', CustomerProfileComponent::class)->name('customer.profile');
-    Route::get('/customer/profile/edit', EditCustomerProfileComponent::class)->name('customer.edit_profile');
- });
+Route::get('/customer/dashboard', CustomerDashboardComponent::class)->name('customer.dashboard');
+Route::get('/customer/profile', CustomerProfileComponent::class)->name('customer.profile');
+Route::get('/customer/profile/edit', EditCustomerProfileComponent::class)->name('customer.edit_profile');
+Route::get('/customer/booking-history', BookingHistoryComponent::class)->name('customer.booking_history');
+Route::post('/service/{service_slug}', [BookingController::class, 'store'])->name('home.store_services_details');
+
+});
  
  //For Service Provider
  Route::middleware(['auth:sanctum','verified','authsprovider'])->group(function () {
  Route::get('/sprovider/dashboard', SproviderDashboardComponent::class)->name('sprovider.dashboard');
  Route::get('/sprovider/profile', SproviderProfileComponent::class)->name('sprovider.profile');
  Route::get('/sprovider/profile/edit', EditSproviderProfileComponent::class)->name('sprovider.edit_profile');
+ Route::get('/sprovider/booking', CustomerBookingComponent::class)->name('sprovider.user_booking');
+ Route::get('/sprovider/booking/{id}', [BookingController::class, 'approval'])->name('sprovider.booknow');
+
+ 
 });
 
  //For Admin
@@ -84,6 +94,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
     Route::get('/admin/slider', AdminSliderComponent::class)->name('admin.slider');
     Route::get('/admin/slide/add', AdminAddSlideComponent::class)->name('admin.add_slide');
     Route::get('/admin/slide/edit/{slide_id}', AdminEditSlideComponent::class)->name('admin.edit_slide');
+    
     Route::get('/admin/contacts', AdminContactComponent::class)->name('admin.contacts');
 
     Route::get('/admin/service-providers', AdminServiceProviderComponent::class)->name('admin.service_providers');

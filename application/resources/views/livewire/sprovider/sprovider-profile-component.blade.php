@@ -46,7 +46,7 @@
                                         <div class="col-md-8">
                                             <h3>Name: {{Auth::user()->name}}</h3>
                                             <p>{{$sprovider->about}}</p>
-                                            <p><b>Email: </b>{{Auth::user()->email}}</p>                                            <p><b>Email: </b>{{Auth::user()->email}}</p>
+                                            <p><b>Email: </b>{{Auth::user()->email}}</p>                                            
                                             <p><b>Phone: </b>{{Auth::user()->phone}}</p>
                                             <p><b>City : </b>{{$sprovider->city}}</p>
                                             <p><b>Service Category: </b>

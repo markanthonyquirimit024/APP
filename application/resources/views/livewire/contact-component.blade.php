@@ -27,17 +27,17 @@
                                 <aside>
                                     <h4>The Office</h4>
                                     <address>
-                                        <strong>SurfsideMedia Home Services.</strong><br>
-                                        <i class="fa fa-map-marker"></i><strong>Address: </strong>Faridabad, Haryana,
-                                        India<br>
+                                        <strong>At Your Service.</strong><br>
+                                        <i class="fa fa-map-marker"></i><strong>Address: </strong>Dagupan City, Pangisinan,
+                                        Philippines<br>
                                         <i class="fa fa-phone"></i><strong>Phone: </strong> +91-1234567890
                                     </address>
                                     <address>
-                                        <strong>SurfsideMedia Emails</strong><br>
+                                        <strong>At Your Service Emails</strong><br>
                                         <i class="fa fa-envelope"></i><strong>Email:</strong><a
-                                            href="mailto:contact@surfsidemedia.in"> contact@surfsidemedia.in</a><br>
+                                            href="mailto:contact@atyourservice.in"> contact@atyourservice.in</a><br>
                                         <i class="fa fa-envelope"></i><strong>Email:</strong><a
-                                            href="mailto:support@surfsidemedia.in"> support@surfsidemedia.in</a>
+                                            href="mailto:support@atyourservice.in"> support@atyourservice.in</a>
                                     </address>
                                 </aside>
                                 <hr class="tall">

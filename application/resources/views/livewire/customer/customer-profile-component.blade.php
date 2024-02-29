@@ -40,7 +40,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <h3>Name: {{Auth::user()->name}}</h3>
-                                            <p><b>Email: </b>{{Auth::user()->email}}</p>
+                                            <p><b>Email: </b>{{Auth::user()->email}}</p>                                            
                                             <p><b>Phone: </b>{{Auth::user()->phone}}</p>
                                             <a href="{{route('customer.edit_profile')}}" class="btn btn-info pull-right">Edit Profile</a>
                                         </div>

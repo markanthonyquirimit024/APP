@@ -22,27 +22,14 @@
 </head>
 <body>
     <div id="layout">
-        <div class="info-head">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <ul class="visible-xs visible-sm">
-                            <li class="text-right"><a href="">
-                                <i class="fa fa-map-marker"></i> Faridabad, Haryana</a></li>
-                        </ul>
-                    </div>
-                    @livewire('location-component')
-                </div>
-            </div>
-        </div>
-        <header id="header" class="header-v3">
+        <header id="header" class="header-v3" style="background-color: white;">
             <nav class="flat-mega-menu">
                 <label for="mobile-button"> <i class="fa fa-bars"></i></label>
                 <input id="mobile-button" type="checkbox">
                 
-                <ul class="collapse" >
+                <ul class="collapse">
                     <li class="title">
-                        <a href="/"><img src="{{ asset('images/logo.png') }}" style="width: 50px;" class="rounded-pill me-3" alt="logo">At Your Service</a>
+                        <a href="/"><img src="{{ asset('images/logo.png') }}" style="width: 50px; color: white;" class="rounded-pill me-3" alt="logo">At Your Service</a>
                     </li>
 
                     <li>
@@ -50,7 +37,7 @@
                     </li>
 
                     <li>
-                        <a href="{{route('home.service_categories')}}">Book Now</a>
+                        <a href="{{route('home.service_categories')}}" style="background-color: #df6732; color:black; border-radius:15px">Book Now</a>
                     </li>
                     @if(Route::has('login'))
                         @auth
@@ -72,6 +59,7 @@
                                     <ul class="drop-down one-column hover-fade">
                                         <li><a href="{{route('sprovider.dashboard')}}">Dashboard</a></li>
                                         <li><a href="{{route('sprovider.profile')}}">Profile</a></li>
+                                        <li><a href="{{route('sprovider.user_booking')}}">Manage Booking</a></li>
                                         <li><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                                     </ul>
                                 </li>
@@ -80,6 +68,8 @@
                                     <ul class="drop-down one-column hover-fade">
                                         <li><a href="{{route('customer.dashboard')}}">Dashboard</a></li>
                                         <li><a href="{{route('customer.profile')}}">Profile</a></li>
+                                        <li><a href="{{route('customer.booking_history')}}">Booking History</a></li>
+
                                         <li><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                                     </ul>
                                 </li>

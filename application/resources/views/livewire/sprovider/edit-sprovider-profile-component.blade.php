@@ -77,7 +77,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="service_locations" class="control-label col-md-3">Service Location Zipcode:</label>
+                                                    <label for="service_locations" class="control-label col-md-3">Service Location:</label>
                                                     <div class="col-md-9">
                                                         <input type="text" class="form-control" name="service_locations" wire:model="service_locations">
                                                     </div>

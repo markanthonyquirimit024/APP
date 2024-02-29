@@ -30,7 +30,7 @@
                                             Edit Profile
                                         </div>
                                         <div class="col-md-6">
-                                                <a href="{{route('sprovider.profile')}}" class="btn btn-info pull-right">View Profile</a>
+                                                <a href="{{route('customer.profile')}}" class="btn btn-info pull-right">View Profile</a>
                                         </div>
                                     </div>
                                 </div>
@@ -41,45 +41,22 @@
                                         <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                                         @endif
                                             <form class="form-horizontal" wire:submit.prevent="updateProfile">
-                                                <div class="form-group">
-                                                    <label for="newimage" class="control-label col-md-3">Profile Image:</label>
+                                            <div class="form-group">
+                                                    <label for="name" class="control-label col-md-3">Name:</label>
                                                     <div class="col-md-9">
-                                                        <input type="file" class="form-control-file" name="newimage" wire:model="newimage">
-                                                        @if($newimage)
-                                                            <img src="{{ $newimage->temporaryUrl() }}" width="220" />
-                                                        @elseif ($newimage)
-                                                            <img src="{{ asset('images/sproviders') }}" width="220" />
-                                                        @else
-                                                            <img src="{{ asset('images/sproviders/default.jpg') }}" width="220" />
-                                                        @endif
+                                                        <input type="text" class="form-control" name="name" wire:model="name">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="about" class="control-label col-md-3">About:</label>
+                                                    <label for="email" class="control-label col-md-3">Email:</label>
                                                     <div class="col-md-9">
-                                                        <textarea type="text" class="form-control" name="about" wire:model="about"></textarea>
+                                                        <input type="email" class="form-control" name="email" wire:model="email">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="city" class="control-label col-md-3">City:</label>
+                                                    <label for="phone" class="control-label col-md-3">Phone:</label>
                                                     <div class="col-md-9">
-                                                        <input type="text" class="form-control" name="city" wire:model="city">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="service_category_id" class="control-label col-md-3">Service Category:</label>
-                                                    <div class="col-md-9">
-                                                        <select class="form-control" name="service_category_id" wire:model="service_category_id">
-                                                            @foreach($scategories as $scategory)
-                                                                <option value="{{ $scategory->id }}">{{ $scategory->name }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="service_locations" class="control-label col-md-3">Service Location Zipcode:</label>
-                                                    <div class="col-md-9">
-                                                        <input type="text" class="form-control" name="service_locations" wire:model="service_locations">
+                                                        <input type="number" class="form-control" name="phone" wire:model="phone">
                                                     </div>
                                                 </div>
                                                 <button type="submit" class="btn btn-success pull-right" >Update Profile</button>

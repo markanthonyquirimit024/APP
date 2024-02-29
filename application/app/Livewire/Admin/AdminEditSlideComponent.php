@@ -14,7 +14,7 @@ class AdminEditSlideComponent extends Component
     public $slide_id;
     public $title;
     public $image;
-    public $status=0;
+    public $status;
     public $newimage;
 
     public function mount($slide_id)
@@ -22,7 +22,7 @@ class AdminEditSlideComponent extends Component
         $slide = Slider::find($slide_id);
         $this->slide_id = $slide->id;
         $this->title = $slide->title;
-        $this->images = $slide->image;
+        $this->image = $slide->image;
         $this->status = $slide->status;
     }
 

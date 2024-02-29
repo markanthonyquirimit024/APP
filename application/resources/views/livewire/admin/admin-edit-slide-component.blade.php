@@ -53,7 +53,7 @@
                                                 <div class="col-sm-9">
                                                     <input type="file" class="form-control-file" name="newimage" wire:model="newimage">
                                                     @error('newimage') <p class="text-danger">{{$message}}</p> @enderror
-                                                    @if($image)
+                                                    @if($newimage)
                                                     <img src="{{$newimage->temporaryUrl()}}" width="60" />
                                                     @else
                                                     <img src="{{asset('images/slider')}}/{{$image}}" width="60" />

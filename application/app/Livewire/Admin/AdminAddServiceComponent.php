@@ -47,7 +47,7 @@ class AdminAddServiceComponent extends Component
     }
 
     public function createService()
-{
+    {
     $this->validate([
         'name' => 'required',
         'slug' => 'required',

@@ -80,7 +80,7 @@
                                     @foreach($slides as $slide)
                                         <tr>
                                             <td>{{$slide->id}}</td>
-                                            <td><img src="{{asset('/images/slider')}}/{{$slide -> image}}" width="60"/> </td>
+                                            <td><img src="{{asset('/images/slider')}}/{{$slide->image}}" width="60"/> </td>
                                             <td>{{$slide->title}}</td>
                                             <td>
                                                 @if($slide->status)

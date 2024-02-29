@@ -93,7 +93,6 @@
                                             <label for="slug" class="control-label col-sm-3">Discount Type: </label>
                                                 <div class="col-sm-9">
                                                     <select class="form-control" wire:model="discount_type">
-                                                        <option value="">Select Service Category</option>
                                                         <option value="fixed">Fixed</option>
                                                         <option value="percent">Percent</option>
 
@@ -106,7 +105,6 @@
                                             <label for="slug" class="control-label col-sm-3">Featured: </label>
                                                 <div class="col-sm-9">
                                                     <select class="form-control" wire:model="featured">
-                                                        <option value="">Select if Featured:</option>
                                                         <option value="0">No</option>
                                                         <option value="1">Yes</option>
 
