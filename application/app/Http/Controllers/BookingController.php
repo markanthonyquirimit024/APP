@@ -31,7 +31,7 @@ class BookingController extends Controller
         $booking->user_location = $request->input('user_location');
         $booking->time = $request->input('time');
         $booking->service_locations = $servicelocations->pluck('service_locations')->implode(', ');
-        $booking->booking_status = 'Processing';
+        $booking->booking_status = 'Waiting for Approval';
 
         if ($booking->save()) {
             session()->flash('message', 'Service has been booked successfully');
@@ -44,7 +44,16 @@ class BookingController extends Controller
     public function approval($id)
     {
         $booking = Booking::find($id);
-        $booking->booking_status = "Approved";
+        $booking->booking_status = "Approved, Your repairman is on the way.";
+        $booking->save();
+        
+        return redirect()->back(); 
+    }
+
+    public function bookingconfirm($id)
+    {
+        $booking = Booking::find($id);
+        $booking->booking_status = "Successful Booking";
         $booking->save();
         
         return redirect()->back(); 

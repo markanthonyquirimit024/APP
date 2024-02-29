@@ -84,9 +84,9 @@
                                                 <th scope="col">Email</th>
                                                 <th scope="col">Phone</th>
                                                 <th scope="col">User Location</th>
-                                                <th scope="col">Booking Date</th>
-                                                <th scope="col">Booking Time</th>
+                                                <th scope="col">Booking Date & Time</th>
                                                 <th scope="col">Status</th>
+                                                <th scope="col">Successful Booking</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -100,9 +100,15 @@
                                                     <td>{{$booking->email}}</td>
                                                     <td>{{$booking->phone}}</td>
                                                     <td>{{$booking->user_location}}</td>
-                                                    <td>{{$booking->date}}</td>
-                                                    <td>{{$booking->time}}</td>
+                                                    <td>{{$booking->date}} {{$booking->time}}</td>
                                                     <td>{{$booking->booking_status}}</td>
+                                                    <td>
+                                                    @if($booking->booking_status == 'Approved, Your repairman is on the way.')
+                                                        <a class="btn btn-info" href="{{route('customer.bookingconfirm', $booking->id)}}">&#10003; Confirm</a>
+                                                        @else
+                                                        <p class="text-light">Booking Success</p>
+                                                    @endif
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

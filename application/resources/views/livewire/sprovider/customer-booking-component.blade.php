@@ -84,8 +84,7 @@
                                                 <th scope="col">Email</th>
                                                 <th scope="col">Phone</th>
                                                 <th scope="col">User Location</th>
-                                                <th scope="col">Booking Date</th>
-                                                <th scope="col">Booking Time</th>
+                                                <th scope="col">Booking Date & Time</th>
                                                 <th scope="col">Status</th>
                                                 <th scope="col">Success Booking</th>
                                             </tr>
@@ -101,12 +100,11 @@
                                                     <td>{{$booking->email}}</td>
                                                     <td>{{$booking->phone}}</td>
                                                     <td>{{$booking->user_location}}</td>
-                                                    <td>{{$booking->date}}</td>
-                                                    <td>{{$booking->time}}</td>
+                                                    <td>{{$booking->date}} {{$booking->time}}</td>
                                                     <td>{{$booking->booking_status}}</td>
                                                     <td>
-                                                        @if($booking->booking_status=='Processing')
-                                                        <a class="btn btn-primary" href="{{route('sprovider.booknow', $booking->id)}}">Approve</a>
+                                                        @if($booking->booking_status == 'Waiting for Approval')
+                                                        <a class="btn btn-primary" href="{{route('sprovider.booknow', $booking->id)}}">&#10003; Approve</a>
                                                         @else
                                                         <p class="text-light">Approved</p>
                                                         @endif

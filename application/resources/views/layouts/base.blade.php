@@ -96,8 +96,8 @@
                                 <li><a href="#">About Us</a> </li>
                                 <li><a href="{{route('home.contact')}}">Contact Us</a></li>
                                 <li><a href="#">FAQ</a></li>
-                                <li><a href="#">Terms of Use</a></li>
-                                <li><a href="#">Privacy</a></li>
+                                
+                                
                             </ul>
                         </div>
                     </div>

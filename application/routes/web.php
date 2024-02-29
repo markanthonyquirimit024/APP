@@ -66,6 +66,9 @@ Route::get('/customer/profile', CustomerProfileComponent::class)->name('customer
 Route::get('/customer/profile/edit', EditCustomerProfileComponent::class)->name('customer.edit_profile');
 Route::get('/customer/booking-history', BookingHistoryComponent::class)->name('customer.booking_history');
 Route::post('/service/{service_slug}', [BookingController::class, 'store'])->name('home.store_services_details');
+Route::get('/customer/booking-history/{id}', [BookingController::class, 'bookingconfirm'])->name('customer.bookingconfirm');
+
+
 
 });
  
@@ -76,6 +79,7 @@ Route::post('/service/{service_slug}', [BookingController::class, 'store'])->nam
  Route::get('/sprovider/profile/edit', EditSproviderProfileComponent::class)->name('sprovider.edit_profile');
  Route::get('/sprovider/booking', CustomerBookingComponent::class)->name('sprovider.user_booking');
  Route::get('/sprovider/booking/{id}', [BookingController::class, 'approval'])->name('sprovider.booknow');
+
 
  
 });
