@@ -25,7 +25,7 @@
     /* Frame for images in #boxes-carousel */
     #boxes-carousel img {
         border: 2px solid black; 
-        width: 100%; /
+        width: 100%; 
         height: auto; 
     }
 

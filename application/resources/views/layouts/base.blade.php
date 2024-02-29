@@ -69,7 +69,6 @@
                                         <li><a href="{{route('customer.dashboard')}}">Dashboard</a></li>
                                         <li><a href="{{route('customer.profile')}}">Profile</a></li>
                                         <li><a href="{{route('customer.booking_history')}}">Booking History</a></li>
-
                                         <li><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                                     </ul>
                                 </li>

@@ -23,6 +23,11 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    const ADM = 'ADM';
+    const SVP = 'SVP';                                                                                
+    const CST = 'CST';
+
     protected $fillable = [
         'name',
         'email',
