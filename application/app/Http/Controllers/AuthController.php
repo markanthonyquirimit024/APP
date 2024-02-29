@@ -133,7 +133,7 @@ class AuthController extends Controller
             return response()->error('No Record Found', 'Incorrect Email Address Provided', 404);
         }
     
-        $resetPasswordToken = str_pad(random_int(1, 9999), 4, '0', STR_PAD_LEFT);
+        $resetPasswordToken = str_pad(random_int(1, 999999), 6, '0', STR_PAD_LEFT);
     
         if (!$userPassReset = PasswordReset::where('email', $user->email)->first()) {
             PasswordReset::create([
