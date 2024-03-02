@@ -80,27 +80,6 @@
                                                     @error('price') <p class="text-danger">{{$message}}</p> @enderror
                                                 </div>
                                         </div>
-
-                                        <div class="form-group">
-                                            <label for="slug" class="control-label col-sm-3">Discount: </label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="discount" wire:model="discount">
-                                                    @error('discount') <p class="text-danger">{{$message}}</p> @enderror
-                                                </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="slug" class="control-label col-sm-3">Discount Type: </label>
-                                                <div class="col-sm-9">
-                                                    <select class="form-control" wire:model="discount_type">
-                                                        <option value="">Select Service Category</option>
-                                                        <option value="fixed">Fixed</option>
-                                                        <option value="percent">Percent</option>
-
-                                                    </select>
-                                                    @error('discount_type') <p class="text-danger">{{$message}}</p> @enderror
-                                                </div>
-                                        </div>
                                         
                                         <div class="form-group">
                                             <label for="slug" class="control-label col-sm-3">Description: </label>

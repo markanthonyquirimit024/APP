@@ -37,6 +37,11 @@ class User extends Authenticatable
         'location'
     ];
 
+    public function utype()
+{
+    return $this->getAttribute('utype');
+}
+
     /**
      * The attributes that should be hidden for serialization.
      *

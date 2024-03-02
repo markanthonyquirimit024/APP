@@ -24,7 +24,7 @@ Route::post('/register', [AuthController::class, 'store']);
 Route::post('/forgot-password', [AuthController::class, 'forgot']);
 Route::post('/reset-password', [AuthController::class, 'reset']);
 
-Route::middleware(['auth:sanctum','verified'])->group(function () {
+Route::middleware(['auth:sanctum','verified', 'authcustomer'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 Route::middleware(['auth:sanctum','verified','authsprovider'])->group(function () {

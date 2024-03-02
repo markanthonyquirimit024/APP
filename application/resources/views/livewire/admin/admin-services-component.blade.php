@@ -83,7 +83,7 @@
                                     @foreach($services as $service)
                                         <tr>
                                             <td>{{$service->id}}</td>
-                                            <td><img src="{{asset('/images/services/thumbnails')}}/{{$service->thumbnail}}" width="60"/> </td>
+                                            <td><img src= width="60"/> </td>
                                             <td>{{$service->name}}</td>
                                             <td>{{$service->price}}</td>
                                             <td>

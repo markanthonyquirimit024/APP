@@ -60,7 +60,7 @@ Route::get('/service/{service_slug}', ServiceDetailsComponent::class)->name('hom
 
 
 //For Customer
-Route::middleware(['auth:sanctum','verified'])->group(function () {
+Route::middleware(['auth:sanctum','verified', 'authcustomer'])->group(function () {
 Route::get('/customer/dashboard', CustomerDashboardComponent::class)->name('customer.dashboard');
 Route::get('/customer/profile', CustomerProfileComponent::class)->name('customer.profile');
 Route::get('/customer/profile/edit', EditCustomerProfileComponent::class)->name('customer.edit_profile');

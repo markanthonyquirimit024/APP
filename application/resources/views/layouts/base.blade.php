@@ -13,7 +13,7 @@
     <link href="{{ asset('assets/css/theme-responsive.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('assets/css/dtb/jquery.dataTables.min.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('assets/css/toastr.min.css') }}" rel="stylesheet" media="screen">        
+    <link href="{{ asset('assets/css/toastr.min.css') }}" rel="stylesheet" media="screen">      
     <script type="text/javascript" src="{{ asset('assets/js/jquery.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/jquery-ui.1.10.4.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/toastr.min.js') }}"></script>
@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="layout">
-        <header id="header" class="header-v3" style="background-color: white;">
+        <header id="header" class="header-v3" style="background-color: black;">
             <nav class="flat-mega-menu">
                 <label for="mobile-button"> <i class="fa fa-bars"></i></label>
                 <input id="mobile-button" type="checkbox">
@@ -77,16 +77,21 @@
                                 @csrf
                             </form>
                         @else
-                        <li class="login-form"> <a href="{{route('register')}}" title="Register">Register</a></li>
-                        <li class="login-form"> <a href="{{route('login')}}" title="Login">Login</a></li>
+                        <li class="login-form"> <a href="#" title="Register">Account</a>
+                            <ul class="drop-down one-column hover-fade">
+                                <li><a href="{{route('login')}}">Login</a></li>
+                                <li><a href="{{route('register')}}">Register</a></li>
+                            </ul>
+                        </li>
                         @endif
                     @endif
-                    <li class="search-bar">
+                    <li class="search-bar" style="display: none;">
                     </li>
                 </ul>
             </nav>
         </header>
         {{$slot}}
+
         <footer id="footer" class="footer-v1">
             <div class="footer-down">
                 <div class="container">

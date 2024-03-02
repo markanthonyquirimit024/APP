@@ -1,211 +1,96 @@
 <div>
-<style>
-    /* Frame for images in #sponsors */
-    #sponsors li {
-        display: inline-block;
-        margin: 10px;
-        border: 2px solid white; 
-        padding: 5px;
-    }
-
-    #sponsors img {
-        width: 100px;
-        height: 100px;
-    }
-
-    /* Frame for images in .portfolioContainer */
-    .portfolioContainer .img-responsive {
-        border: 2px solid black; 
-    }
-
-    .portfolioContainer .img-hover {
-        position: relative;
-    }
-
-    /* Frame for images in #boxes-carousel */
-    #boxes-carousel img {
-        border: 2px solid black; 
-        width: 100%; 
-        height: auto; 
-    }
-
-    .services-lines-info h5 {
-        color: #fff;
-    }
-    .h5{
-        color:#fff;
-    }
-</style>
+<link rel="stylesheet" href="{{asset('assets/home.css')}}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
 
-
-    <section class="tp-banner-container">
-        <div class="tp-banner">
-            <ul>
-                @foreach($slides as $slide)
-                <li data-transition="slidevertical" data-slotamount="1" data-masterspeed="1000"
-                    data-saveperformance="off" data-title="Slide">
-                    <img src="{{ asset('images/slider') }}/{{$slide->image}}" alt="{{$slide->title}}" data-bgposition="center center"
-                        data-kenburns="on" data-duration="6000" data-ease="Linear.easeNone" data-bgfit="130"
-                        data-bgfitend="100" data-bgpositionend="right center">
-                </li>
-                @endforeach
-            </ul>
-            <div class="tp-bannertimer"></div>
-        </div>
-        <div class="filter-title">
-            <div class="title-header">
-                <h2 style="color:#fff;">BOOK A SERVICE</h2>
-                <p class="lead">Book a service at a very affordable price.</p>
-            </div>
-            <div class="filter-header">
-                <form id="sform" action="{{route('searchService')}}" method="post">
-                    @csrf
-                    <input type="text" id="q" name="q" required="required" placeholder="What Services do you want?"
-                        class="input-large typeahead" autocomplete="off">
-                    <input type="submit" name="submit" value="Search">
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <section class="content-central" style="background-color: white;">
-        <div class="content_info content_resalt" style="background-color: rgba(0, 0, 0, 1)">
-            <div class="container" style="margin-top: 40px;">
-                <div class="row"></div>
-            </div>
-            <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <ul id="sponsors" class="tooltip-hover">
-                        @foreach($scategories as $scategory)
-                        <li data-toggle="tooltip" title="{{ $scategory->name }}" data-original-title="{{ $scategory->name }}">
-                            <a href="{{ route('home.services_by_category', ['category_slug' => $scategory->slug]) }}">
-                                <img src="{{ asset('images/categories') }}/{{ $scategory->image }}" alt="{{ $scategory->name }}" style="width: 100px; height: 100px;">
-                            </a>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        </div>
-        <div class="semiboxshadow text-center">
-            <img src="{{ asset('assets/img/img-theme/shp.png') }}" class="img-responsive" alt="">
-        </div>
-        <div class="content_info">
-            <div class="container">
-                <div class="row">
-                    <div class="titles" style="background-color: black;">
-                        <h2>At <span>Your</span> Service</h2>
-                        <hr class="tall">
-                    </div>
-                </div>
-                <div class="portfolioContainer">
-                    @foreach($fservices as $service)
-                    <div class="col-xs-6 col-sm-4 col-md-3 hsgrids" style="padding-right: 5px; padding-left: 5px;">
-                        <a class="g-list" href="{{ route('home.services_details', ['service_slug' => $service->slug]) }}">
-                            <div class="img-hover">
-                                <img src="{{ asset('images/services/thumbnails') }}/{{ $service->thumbnail }}"
-                                    alt="{{ $service->name }}" class="img-responsive">
-                            </div>
-                            <div class="info-gallery">
-                                <h3>{{ $service->name }}</h3>
-                                <hr class="separator">
-                                <p>{{ $service->tagline }}</p>
-                                <div class="content-btn">
-                                    <a href="{{ route('home.services_details', ['service_slug' => $service->slug]) }}"
-                                        class="btn btn-primary">Book Now</a>
-                                </div>
-                                <div class="price"><span>&#36;</span><b>From</b>${{ $service->price }}</div>
-                            </div>
-                        </a>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="titles" style="background-color: black;">
-                    <h2><span>Booking</span>Services</h2>
-                    <hr class="tall">
-                </div>
-            </div>
-        </div>
-        <div class="content_info">
-            <div class="bg-dark color-white border-top">
-                <div class="container" >
-                    <div class="row">
-                        <div class="col-md-4 ">
-                            <div class="services-lines-info">
-                                <h2>WELCOME TO DIVERSIFIED</h2>
-                                <p class="lead">
-                                    Book best services at one place.
-                                    <span class="line"></span>
-                                </p>
-                                <p>Find a wide variety of home services.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <ul class="services-lines">
-                                @foreach($fscategories as $fscategory)
-                                <li style="background-color: black;">
-                                    <a href="{{ route('home.services_by_category', ['category_slug' => $fscategory->slug]) }}">
-                                        <div class="item-service-line">
-                                            <i class="fa">
-                                                <img class="icon-img"
-                                                    src="{{ asset('images/categories') }}/{{ $fscategory->image }}" style="width: 150px; height: 150px;">
-                                            </i>
-                                            <h5 style="background-color:#fff;">{{ $fscategory->name }}</h5>
-                                        </div>
-                                    </a>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div id="boxes-carousel">
-                @foreach($aservices as $aservice)
-                <div>
-                    <a class="g-list" href="{{ route('home.services_details', ['service_slug' => $aservice->slug]) }}">
-                        <div class="img-hover">
-                            <img src="{{ asset('images/services/thumbnails') }}/{{ $aservice->thumbnail }}"
-                                alt="{{ $aservice->name }}" class="img-responsive">
-                        </div>
-                        <div class="info-gallery">
-                            <h3>{{ $aservice->name }}</h3>
-                            <hr class="separator">
-                            <p>{{ $aservice->tagline }}</p>
-                            <div class="content-btn">
-                                <a href="{{ route('home.services_details', ['service_slug' => $aservice->slug]) }}"
-                                    class="btn btn-primary">Book Now</a>
-                            </div>
-                            <div class="price"><span>&#36;</span><b>From</b>${{ $aservice->price }}</div>
-                        </div>
-                    </a>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
+<div class="content-section">
+    <h1><b>Having trouble?</b></h1>
+    <h2>We Are <b>At Your Service!</b></h2>
+    <h4>Repair estimate for your vehicles</h4>
 </div>
 
-@push('scripts')
-<script type="text/javascript">
-    var path = "{{route('autocomplete')}}";
-    $('input.typeahead').typeahead({
-        source:function(query,process){
-            return $.get(path,{query:query},function(data){
-                return process(data);
-            });
+<div class="content-section-2">
+    <h1><b>Top Branches</b></h1>
+</div>
+
+<div class="top-branches">
+    <div class="branch-container">
+        <img src="logo.png" alt="Image 1">
+        <p>M.H. Del Pilar Street, Dagupan City, Philippines</p>
+        <img src="loc.png" class="loc-img" alt="Location Image">
+    </div>
+    <div class="branch-container">
+        <img src="logo.png" alt="Image 2">
+        <p>Arellano Street, Dagupan City, Philippines</p>
+        <img src="loc.png" class="loc-img" alt="Location Image">
+    </div>
+    <div class="branch-container">
+        <img src="logo.png" alt="Image 3">
+        <p>Dagupan-Lingayen Rd, Dagupan City, Philippines</p>
+        <img src="loc.png" class="loc-img" alt="Location Image">
+    </div>
+</div>
+
+<div class="new-bg-section">
+    <div class="contact-section">
+        <h1><b>CONTACT US</b></h1>
+        <select class="dropdown-box">
+            <option value="option1">BRANCH LOCATIONS</option>
+            <option value="option2">M.H. Del Pilar Street, Dagupan City, Philippines</option>
+            <option value="option3">Arellano Street, Dagupan City, Philippines</option>
+            <option value="option4">Dagupan-Lingayen Rd, Dagupan City, Philippines</option>
+        </select>
+        <div class="display-box">
+            EMAIL: atyourservice@gmail.com
+        </div>
+        <div class="display-box">
+            CONTACT NUMBER: +63 402 221 4920
+        </div>
+    </div>
+</div>
+
+<div class="about">
+    <center><h1><b>What They Say <span>About Us</span>?</b></h1></center>
+</div>
+
+<div class="frame">
+    <div class="left-side">
+        <p><b>My recent experience with At Your Service was nothing short of exceptional. From their prompt and accommodating customer service to their skilled technicians and transparent communication throughout the repair process, every aspect exceeded my expectations. The welcoming atmosphere, coupled with their dedication to quality and customer satisfaction, left me thoroughly impressed. My vehicle was returned to me in pristine condition, and I couldn't be happier with the outcome. AYS has undoubtedly set the bar high for vehicle repair services, and I wholeheartedly recommend them to anyone in need of reliable and top-notch service.</b></p>
+        <img src="client2-modified.png" alt="Small Image">
+        <h2><b>Angela Jones</b></h2>
+    </div>
+    <div class="right-side">
+        <img src="goods.jpg" alt="Large Image">
+    </div>
+</div>
+
+<script>
+    function toggleDashboard() {
+        const dashboard = document.querySelector('.dashboard');
+        const navbar = document.querySelector('.navbar h1');
+        const currentLeft = parseInt(getComputedStyle(dashboard).left);
+
+        if (currentLeft === 0) {
+            dashboard.style.left = '-250px';
+            navbar.classList.remove('dashboard-open');
+        } else {
+            dashboard.style.left = '0';
+            navbar.classList.add('dashboard-open');
         }
-    });
+    }
+
+    function toggleDropdown(event) {
+        event.preventDefault();
+        const dropdownContent = document.getElementById("dropdownContent");
+        dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+    }
 </script>
 
-@endpush
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+</div>

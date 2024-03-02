@@ -16,11 +16,11 @@ class AdminServicesComponent extends Component
         $service = Service::find($service_id);
         if($service->thumbnail)
         {
-            unlink('images/services/thumbnails'. '/' .$service->thumbnail);
+            unlink('images/services/thumbnails/' . $service->thumbnail);
         }
         if($service->image)
         {
-            unlink('images/services'. '/' .$service->image);
+            unlink('images/services/' . $service->image);
         }
         $service->delete();
         session()->flash('message', 'Service has been successfully deleted.');

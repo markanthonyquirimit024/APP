@@ -34,12 +34,12 @@ class AdminAddServiceComponent extends Component
         $this->validateOnly($fields,[
             'name' => 'required',
             'slug' => 'required',
-            'tagline' => 'required',
+            'tagline' => 'required|string|min:10|max:80',
             'service_category_id' => 'required',
-            'price' => 'required',
+            'price' => 'required|numeric',
             'image' => 'required|mimes:jpeg,png',
             'thumbnail' => 'required|mimes:jpeg,png',
-            'description' =>'required',
+            'description' =>'required|string|min:10|max:255',
             'inclusion' => 'required',
             'exclusion' => 'required'
         ]);
@@ -51,10 +51,10 @@ class AdminAddServiceComponent extends Component
     $this->validate([
         'name' => 'required',
         'slug' => 'required',
-        'tagline' => 'required',
+        'tagline' => 'required|string|min:10|max:80',
         'service_category_id' => 'required',
-        'price' => 'required',
-        'description' => 'required',
+        'price' => 'required|numeric',
+        'description' => 'required|string|min:10|max:255',
         'thumbnail' => 'required|mimes:jpeg,png',
         'image' => 'required|mimes:jpeg,png',
         'inclusion' => 'required',
