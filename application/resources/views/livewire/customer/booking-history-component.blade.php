@@ -103,11 +103,18 @@
                                                     <td>{{$booking->date}} {{$booking->time}}</td>
                                                     <td>{{$booking->booking_status}}</td>
                                                     <td>
-                                                    @if($booking->booking_status == 'Approved, Your repairman is on the way.')
-                                                        <a class="btn btn-info" href="{{route('customer.bookingconfirm', $booking->id)}}">&#10003; Confirm</a>
+                                                        @if($booking->booking_status == 'Approved, Your repairman is on the way.')
+                                                            <a class="btn btn-info" href="{{route('customer.bookingconfirm', $booking->id)}}">&#10003; Confirm</a>
+                                                        @elseif($booking->booking_status == 'Waiting for Approval')
+                                                            <a href="#" onclick="confirm('Are you sure you want to cancel this booking?') || event.stopImmediatePropagation()" wire:click.prevent="destroy({{$booking->id}})" style="margin-left: 10px; margin-top:5px">
+                                                                <i class="fa fa-times btn-danger">Cancel Booking</i>
+                                                            </a>
+                                                        @elseif($booking->booking_status == 'Cancelled Booking')
+                                                            <p class="text-light">Booking Successfully Canceled</p>
                                                         @else
-                                                        <p class="text-light">Booking Success</p>
-                                                    @endif
+                                                            <p class="text-light">Booking Success</p>
+                                                        @endif
+</td>
                                                     </td>
                                                 </tr>
                                             @endforeach

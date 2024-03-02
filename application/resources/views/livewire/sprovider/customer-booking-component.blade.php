@@ -105,6 +105,8 @@
                                                     <td>
                                                         @if($booking->booking_status == 'Waiting for Approval')
                                                         <a class="btn btn-primary" href="{{route('sprovider.booknow', $booking->id)}}">&#10003; Approve</a>
+                                                        @elseif($booking->booking_status == 'Cancelled Booking')
+                                                        <p class="text-light">Booking Cancelled</p>
                                                         @else
                                                         <p class="text-light">Approved</p>
                                                         @endif
