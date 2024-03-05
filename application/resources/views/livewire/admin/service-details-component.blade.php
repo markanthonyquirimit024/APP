@@ -1,9 +1,7 @@
 <link rel="stylesheet" href="{{asset('assets/popup.css')}}">
 
 <div>
-<div class="section-title-01 honmob">
-            
-        </div>
+
         <section class="content-central">
             <div class="semiboxshadow text-center">
                 <img src="img/img-theme/shp.png" class="img-responsive" alt="">
@@ -248,11 +246,5 @@
             });
         });
     </script>
-
-
-
-
-
-
 </div>
 

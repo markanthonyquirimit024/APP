@@ -1,11 +1,11 @@
-<div>
+<div style="background-color: black;">
 <link rel="stylesheet" href="{{asset('assets/services.css')}}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
 
-<div class="content-section-2">
-    <h1>AYS Services</h1>
+<div class="content-section-2" >
+    <h1 style="color: white;">AYS Services</h1>
 </div>
 
 <div class="slick-carousel">
@@ -15,7 +15,7 @@
                 <a href="{{ route('home.services_by_category', ['category_slug' => $scategory->slug]) }}">
                     <img src="{{ asset('images/categories') }}/{{ $scategory->image }}" alt="{{ $scategory->name }}" style="width:70rem; height:8rem">
                     <div class="description" style="position: absolute; bottom: 35%; left: 10%;">
-                        <p>{{ $scategory->name }}</p>
+                        <p>{{$scategory->name}}</p>
                     </div>
                 </a>
             </div>
@@ -145,4 +145,60 @@
         });
     });
 </script>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the date and time input elements
+            var dateInput = document.getElementById('date');
+            var timeInput = document.getElementById('time');
+
+            // Set the current date as the default date
+            var today = new Date();
+            var year = today.getFullYear();
+            var month = (today.getMonth() + 1).toString().padStart(2, '0');
+            var day = today.getDate().toString().padStart(2, '0');
+            var todayString = `${year}-${month}-${day}`;
+            dateInput.setAttribute('min', todayString);
+            dateInput.value = todayString;
+
+            // Set the default time to the current time in the Philippines (Manila) time zone (UTC+8)
+            var currentTimeInManila = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Manila" }));
+            var currentHours = currentTimeInManila.getHours();
+            var currentMinutes = currentTimeInManila.getMinutes();
+            var currentTimeString = (currentHours < 10 ? '0' : '') + currentHours + ':' + (currentMinutes < 10 ? '0' : '') + currentMinutes;
+            timeInput.value = currentTimeString;
+
+            // Calculate the deadline 5 minutes from now
+            var deadline = new Date(today.getTime() + 5 * 60 * 1000);
+
+            // Optionally, you can also add an event listener to handle changes in the selected date
+            dateInput.addEventListener('change', function () {
+                // Validate the selected date against the current date
+                var selectedDate = new Date(dateInput.value);
+                today.setHours(0, 0, 0, 0); // Set time to midnight for comparison
+                if (selectedDate < today) {
+                    alert('Please select a future date for your booking.');
+                    dateInput.value = todayString; // Reset to the current date if invalid
+                }
+            });
+
+            // Add an event listener to the time input for validation
+            timeInput.addEventListener('blur', function () {
+                // Get the selected time and set it to the current date
+                var selectedTime = new Date(todayString + ' ' + timeInput.value);
+
+                // Validate the selected time against the current time
+                if (selectedTime < currentTimeInManila) {
+                    alert('Please select a future time for your booking.');
+                    timeInput.value = currentTimeString; // Set the time back to the current time if invalid
+                }
+
+                // Validate against the 5-minute deadline
+                if (selectedTime > deadline) {
+                    alert('You have exceeded the 5-minute limit for booking.');
+                    timeInput.value = currentTimeString; // Reset to the current time if exceeded the deadline
+                }
+            });
+        });
+    </script>
 </div>

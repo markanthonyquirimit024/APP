@@ -2,6 +2,7 @@
 <?php
 
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\SearchController;
 use App\Livewire\Admin\AdminAddServiceCategoryComponent;
 use App\Livewire\Admin\AdminAddServiceComponent;
@@ -24,6 +25,7 @@ use App\Livewire\Customer\BookingHistoryComponent;
 use App\Livewire\Customer\CustomerDashboardComponent;
 use App\Livewire\Customer\CustomerProfileComponent;
 use App\Livewire\Customer\EditCustomerProfileComponent;
+use App\Livewire\Customer\FeedbackBookingComponent;
 use App\Livewire\HomeComponent;
 use App\Livewire\ServiceCategoriesComponent;
 use App\Livewire\ServicesByCategoryComponent;
@@ -46,8 +48,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeComponent::class)->name('home');
 
-
-
 Route::get('/service-categories', ServiceCategoriesComponent::class)->name('home.service_categories');
 Route::get('/{category_slug}/services', ServicesByCategoryComponent::class)->name('home.services_by_category');
 
@@ -56,6 +56,9 @@ Route::post('/search', [SearchController::class, 'searchService'])->name('search
 Route::get('/change-location', [ChangeLocationComponent::class])->name('home.change_location');
 Route::get('/contact-us', ContactComponent::class)->name('home.contact');
 Route::get('/service/{service_slug}', ServiceDetailsComponent::class)->name('home.services_details');
+Route::post('/sprovider-details', [SearchController::class, 'getDetails'])->name('get.details');
+
+
 
 
 
@@ -63,13 +66,11 @@ Route::get('/service/{service_slug}', ServiceDetailsComponent::class)->name('hom
 Route::middleware(['auth:sanctum','verified', 'authcustomer'])->group(function () {
 Route::get('/customer/dashboard', CustomerDashboardComponent::class)->name('customer.dashboard');
 Route::get('/customer/profile', CustomerProfileComponent::class)->name('customer.profile');
-Route::get('/customer/profile/edit', EditCustomerProfileComponent::class)->name('customer.edit_profile');
+Route::get('/customer/profile/edit/{id}', EditCustomerProfileComponent::class)->name('customer.edit_profile');
 Route::get('/customer/booking-history', BookingHistoryComponent::class)->name('customer.booking_history');
 Route::post('/service/{service_slug}', [BookingController::class, 'store'])->name('home.store_services_details');
 Route::get('/customer/booking-history/{id}', [BookingController::class, 'bookingconfirm'])->name('customer.bookingconfirm');
-
-
-
+Route::get('/customer/booking-history/feedback/{booking_id}', FeedbackBookingComponent::class)->name('customer.booking_feedback');
 });
  
  //For Service Provider

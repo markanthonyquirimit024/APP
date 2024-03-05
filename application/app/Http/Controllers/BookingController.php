@@ -27,7 +27,7 @@ class BookingController extends Controller
         $booking->price = $request->input('price');
         $booking->email = $request->input('email');
         $booking->phone = $request->input('phone');
-        $booking->image = $request->input('image');
+    $booking->image = $request->input('image');
         $booking->user_location = $request->input('user_location');
         $booking->time = $request->input('time');
         $booking->service_locations = $servicelocations->pluck('service_locations')->implode(', ');
@@ -38,7 +38,7 @@ class BookingController extends Controller
         } else {
             session()->flash('message', 'Error: Unable to book the service');
         }
-        return redirect()->back();
+        return redirect()->route('customer.booking_history');
     }
 
     public function approval($id)

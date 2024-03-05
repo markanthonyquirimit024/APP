@@ -11,7 +11,7 @@ class Booking extends Model
 
     protected $fillable = ['user_id', 'name', 'email', 'phone', 
     'date', 'time', 'service_id', 'service_title', 
-    'quantity', 'price', 'image', 'booking_status'];
+    'quantity', 'price', 'image', 'booking_status', 'feedback'];
 
     public function user()
     {
@@ -21,5 +21,10 @@ class Booking extends Model
     public function service()
     {
         return $this->belongsTo(Service::class);
+    }
+
+    public function feedback()
+    {
+        return $this->hasOne(Feedback::class);
     }
 }

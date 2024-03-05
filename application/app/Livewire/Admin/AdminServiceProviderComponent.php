@@ -13,7 +13,6 @@ class AdminServiceProviderComponent extends Component
     public function deleteServiceprovider($sproviders_id)
     {
         $sprovidersacct = ServiceProvider::find($sproviders_id);
-        unlink('images/sproviders/'.$sprovidersacct->image);
         $sprovidersacct->delete();
         session()->flash('message', 'Service Providers has been successfully deleted.');
     }
