@@ -61,6 +61,7 @@ Route::post('/sprovider-details', [SearchController::class, 'getDetails'])->name
 
 
 
+
 //For Customer
 Route::middleware(['auth:sanctum','verified', 'authcustomer'])->group(function () {
 Route::get('/customer/dashboard', CustomerDashboardComponent::class)->name('customer.dashboard');

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <div style="background-color: black;">
+=======
+<div>
+>>>>>>> db64038a240d8434b68a3e8ae7ad8984681f1af4
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
@@ -388,12 +392,41 @@
         @endforeach
     </ul>
     <div class="tp-bannertimer"></div>
+<<<<<<< HEAD
+=======
+</div>
+<div class="content-section">
+
+    <h1><b>Having trouble?</b></h1>
+    <h2>We Are <b>At Your Service!</b></h2>
+    <h4>Repair estimate for your vehicles</h4>
+>>>>>>> db64038a240d8434b68a3e8ae7ad8984681f1af4
 </div>
 <div class="content-section" >
 
+<<<<<<< HEAD
     <h1 style="color: white;"><b>Having trouble?</b></h1>
     <h2 style="color: white;">We Are <b>At Your Service!</b></h2>
     <h4 style="color: white;">Repair estimate for your vehicles</h4>
+=======
+
+<div class="new-bg-section">
+    <div class="contact-section">
+        <h1><b>CONTACT US</b></h1>
+        <select class="dropdown-box">
+            <option value="option1">BRANCH LOCATIONS</option>
+            <option value="option2">M.H. Del Pilar Street, Dagupan City, Philippines</option>
+            <option value="option3">Arellano Street, Dagupan City, Philippines</option>
+            <option value="option4">Dagupan-Lingayen Rd, Dagupan City, Philippines</option>
+        </select>
+        <div class="display-box">
+            EMAIL: atyourservice@gmail.com
+        </div>
+        <div class="display-box">
+            CONTACT NUMBER: +63 402 221 4920
+        </div>
+    </div>
+>>>>>>> db64038a240d8434b68a3e8ae7ad8984681f1af4
 </div>
 
 <div class="about">
@@ -404,8 +437,13 @@
     @foreach($feedbacks as $feedback)
     <div class="frame">
       <div class="left-side">
+<<<<<<< HEAD
         <p style="color: white;"><b>{{$feedback->message}}</b></p>
         <h2 style="color: white;"><b>{{$feedback->name}}</b></h2>
+=======
+        <p><b>{{$feedback->message}}</b></p>
+        <h2><b>{{$feedback->name}}</b></h2>
+>>>>>>> db64038a240d8434b68a3e8ae7ad8984681f1af4
         <div class="stars">
             @for ($i = 1; $i <= 5; $i++)
                 @if ($i <= $feedback->rating)
@@ -442,7 +480,11 @@
         </div>
         <div class="faqs">
             <div class="question"><b>How do I create a new account?</b></div>
+<<<<<<< HEAD
             <div class="answer"><b>To create a new account, click on the <a href="{{route('register')}}">Sign Up</a> button and fill out the required information.</b></div>
+=======
+            <div class="answer"><b>To create a new account, click on the "Sign Up" button and fill out the required information.</b></div>
+>>>>>>> db64038a240d8434b68a3e8ae7ad8984681f1af4
         </div>
         <div class="faqs">
             <div class="question"><b>What types of car services do you offer?</b></div>
@@ -451,6 +493,7 @@
     </div>
 </div>
 
+<<<<<<< HEAD
 <div class="content-central">
 
             <div class="content_info">
@@ -501,6 +544,8 @@
                 </div>
             </div>
 
+=======
+>>>>>>> db64038a240d8434b68a3e8ae7ad8984681f1af4
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -552,7 +597,10 @@ question.addEventListener("click", function() {
 });
 });
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> db64038a240d8434b68a3e8ae7ad8984681f1af4
 </script>
 
 </div>
