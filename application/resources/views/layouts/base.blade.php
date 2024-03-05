@@ -20,10 +20,11 @@
     <script type="text/javascript" src="{{ asset('assets/js/modernizr.js') }}"></script>
     @livewireStyles
 </head>
+
 <body>
-    <div id="layout">
+    <div id="layout" style="background-color:#dd6737">
         <header id="header" class="header-v3" style="background-color: black;">
-            <nav class="flat-mega-menu">
+            <nav class="flat-mega-menu sticky-top">
                 <label for="mobile-button"> <i class="fa fa-bars"></i></label>
                 <input id="mobile-button" type="checkbox">
                 
@@ -55,7 +56,7 @@
                                     </ul>
                                 </li>
                             @elseif(Auth::user()->utype==='SVP')
-                                <li class="login-form"> <a href="#" title="Register">My Account (S Provider)</a>
+                                <li class="login-form"> <a href="#" title="Register">My Account ({{Auth::user()->name}})</a>
                                     <ul class="drop-down one-column hover-fade">
                                         <li><a href="{{route('sprovider.dashboard')}}">Dashboard</a></li>
                                         <li><a href="{{route('sprovider.profile')}}">Profile</a></li>
@@ -64,7 +65,7 @@
                                     </ul>
                                 </li>
                             @else
-                                <li class="login-form"> <a href="#" title="Register">My Account (Customer)</a>
+                                <li class="login-form"> <a href="#" title="Register">My Account ({{Auth::user()->name}})</a>
                                     <ul class="drop-down one-column hover-fade">
                                         <li><a href="{{route('customer.dashboard')}}">Dashboard</a></li>
                                         <li><a href="{{route('customer.profile')}}">Profile</a></li>
@@ -92,22 +93,8 @@
         </header>
         {{$slot}}
 
-        <footer id="footer" class="footer-v1">
-            <div class="footer-down">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <ul class="nav-footer">
-                                <li><a href="#">About Us</a> </li>
-                                <li><a href="{{route('home.contact')}}">Contact Us</a></li>
-                                <li><a href="#">FAQ</a></li>
-                                
-                                
-                            </ul>
-                        </div>
-                    </div>
-                </div>                
-            </div>            
+        <footer id="footer">
+       
         </footer>
     </div>
     <script type="text/javascript" src="{{ asset('assets/js/nav/jquery.sticky.js') }}"></script>

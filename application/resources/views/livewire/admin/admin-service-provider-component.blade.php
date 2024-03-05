@@ -25,22 +25,6 @@
         }
     </style>
 
-    <div class="section-title-01 honmob">
-        <div class="bg_parallax image_02_parallax"></div>
-        <div class="opacy_bg_02">
-            <div class="container">
-                <h1>Service Providers</h1>
-                <div class="crumbs">
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li>/</li>
-                        <li>Service Providers</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <section class="content-central">
         <div class="content_info">
             <div class="paddings-mini">
@@ -67,11 +51,9 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Image</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Phone</th>
-                                        <th scope="col">City</th>
                                         <th scope="col">Service Locations</th>
                                         <th scope="col">Action</th>
 
@@ -82,14 +64,12 @@
                                     @foreach($sproviders as $sprovider)
                                         <tr>
                                             <td>{{$sprovider->id}}</td>
-                                            <td><img src="{{asset('/images/sproviders')}}/{{$sprovider->image}}" width="60"/> </td>
                                             <td>{{$sprovider->user->name}}</td>
                                             <td>{{$sprovider->user->email}}</td>
                                             <td>{{$sprovider->user->phone}}</td>
-                                            <td>{{$sprovider->city}}</td>
                                             <td>{{$sprovider->service_locations}}</td>
                                             <td>
-                                                <a href="#" onclick="confirm('Are you sure you want to delete this service?') || event.stopImmediatePropagation()"  wire:click.prevent="deleteServiceprovider({{$sprovider->id}})"  style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
+                                                <a href="#" onclick="confirm('Are you sure you want to delete this Provider?') || event.stopImmediatePropagation()"  wire:click.prevent="deleteServiceprovider({{$sprovider->id}})"  style="margin-left: 10px;"><i class="fa fa-times text-danger btn btn-danger">Delete Account</i></a>
                                             </td>
                                         </tr>
                                     @endforeach

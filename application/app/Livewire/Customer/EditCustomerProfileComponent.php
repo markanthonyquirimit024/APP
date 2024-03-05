@@ -3,6 +3,7 @@
 namespace App\Livewire\Customer;
 
 use App\Models\Customer;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -15,28 +16,40 @@ class EditCustomerProfileComponent extends Component
     public $customer_id;
     public $name;
     public $email;
+    public $image;
     public $phone;
+    public $newimage;
 
     
 
-    public function mount()
+    public function mount($id)
     {
-        $customer = Customer::where('customer_id', Auth::user()->id)->first();
-        $this->customer_id = $customer->id;
+        $customer = User::findOrFail($id);
+        $this->customer_id = $id;
         $this->name = $customer->name;
         $this->email = $customer->email;
         $this->phone = $customer->phone;
+        $this->image = $customer->image;
     }
 
     public function updateProfile()
-    {
-        $customer = Customer::where('customer_id', Auth::user()->id)->first();
-        $customer->name = $this->name;
-        $customer->email = $this->email;
-        $customer->phone = $this->phone;
-        $customer->save();
-        session()->flash('message', 'Profile has been successfully updated!');
+{
+    $user = User::findOrFail($this->customer_id);
+
+    if ($this->newimage) {
+        $imageName = Carbon::now()->timestamp . '.' . $this->newimage->extension();
+        $this->newimage->storeAs('customers', $imageName);
+        $user->image = $imageName;
     }
+
+    $user->name = $this->name;
+    $user->email = $this->email;
+    $user->phone = $this->phone;
+    $user->save();
+
+    session()->flash('message', 'Profile has been successfully updated!');
+}
+
 
     public function render()
     {

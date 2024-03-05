@@ -1,22 +1,4 @@
 <div>
-    
-
-    <div class="section-title-01 honmob">
-        <div class="bg_parallax image_02_parallax"></div>
-        <div class="opacy_bg_02">
-            <div class="container">
-                <h1>Add Service</h1>
-                <div class="crumbs">
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li>/</li>
-                        <li>Add Service</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <section class="content-central">
         <div class="content_info">
             <div class="paddings-mini">

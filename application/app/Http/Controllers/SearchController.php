@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
+use App\Models\ServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 class SearchController extends Controller
@@ -25,4 +26,23 @@ class SearchController extends Controller
             return back();
         }
     }
+
+public function getDetails(Request $request)
+{
+    $serviceLocation = $request->input('service_location');
+
+    $serviceProvider = ServiceProvider::where('service_locations', $serviceLocation)->first();
+
+    if ($serviceProvider) {
+        $user = $serviceProvider->user;
+
+        return response()->json([
+            'email' => $user->email,
+            'phone' => $user->phone,
+        ]);
+    }
+
+    return response()->json(['error' => 'No data found for the selected service location.'], 404);
+}
+
 }

@@ -25,7 +25,13 @@ class EditSproviderProfileComponent extends Component
 
     public function mount()
     {
-        
+    $sprovider = ServiceProvider::where('user_id', Auth::user()->id)->first();
+
+    $this->service_provider_id = $sprovider->id;
+    $this->about = $sprovider->about;
+    $this->city = $sprovider->city;
+    $this->service_category_id = $sprovider->service_category_id;
+    $this->service_locations = $sprovider->service_locations;
     }
 
     public function updateProfile()
@@ -34,7 +40,7 @@ class EditSproviderProfileComponent extends Component
         if($this->newimage)
         {
             $imageName = Carbon::now()->timestamp . '.' . $this->newimage->extension();
-            $this->newimage->storeAs('sprovders', $imageName);
+            $this->newimage->storeAs('sproviders', $imageName);
             $sprovider->image = $imageName;
         }
 
